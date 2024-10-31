@@ -15,7 +15,7 @@ class DetailScreen : UIViewController {
     @IBOutlet weak var posterImage: UIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var movieOverviewLabel: UITextView!
-    @IBOutlet weak var movieRateLabel: UILabel!
+    @IBOutlet weak var movieRateButton: UIButton!
     @IBOutlet weak var movieYearReleaseLabel: UILabel!
     @IBOutlet weak var movieDurationLabel: UILabel!
     @IBOutlet weak var movieCategoryLabel: UILabel!
@@ -47,10 +47,10 @@ class DetailScreen : UIViewController {
         posterImage.kf.setImage(with: posterUrl)
         backDropImage.kf.setImage(with: backdropUrl)
         movieNameLabel?.text = movie?.title ?? ""
-        movieRateLabel?.text = String(round((movie?.voteAverage ?? 5.0) * 10) / 10)
+        movieRateButton?.setTitle(String(round((movie?.voteAverage ?? 5.0) * 10) / 10), for: .normal)
         movieOverviewLabel?.text = movie?.overview ?? ""
         movieYearReleaseLabel?.text = String(movie?.releaseDate.split(separator: "-").first ?? "2000")
-        movieDurationLabel?.text = String(movie?.duration ?? 0)
+        movieDurationLabel?.text = "\(String(movie?.duration ?? 0)) Minutes"
         movieCategoryLabel?.text = movie?.genres?.first?.genreName
     }
     
